@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Cari Kart</title>
 </head>
-<body>
 
-    <div id="liste-alani"></div>
+<body class="bg-gray-100 min-h-screen py-8 px-4">
+
+    <div class="max-w-7xl mx-auto bg-white rounded-lg shadow p-5">
+
+        <h1 class="text-2xl font-bold mb-4">Cari Kart Yönetim Modülü</h1>
+
+        <div class="liste-alani-ust flex gap-3 justify-between mb-6 mt-4">
+            <input type="text" id="arama-alani" placeholder="Arama yap..."
+                class="border border-gray-300 rounded-full px-3 py-2 flex-1">
+            <select id="cariTipiFiltre" class="border border-gray-300 rounded-full px-3 py-2">
+                <option value="">Tüm Cari Tipleri</option>
+            </select>
+            <select id="cariDurumuFiltre" class="border border-gray-300 rounded-full px-3 py-2">
+                <option value="">Tüm Cari Durumları</option>
+            </select>
+        </div>
+
+        <div id="liste-alani"></div>
+
+    </div>
+
     <div id="kart-alani"></div>
     <div id="modal-alani"></div>
 
-<script src="js/data.js"></script>
-<script src="js/state.js"></script> 
-<script src="js/utils.js"></script>
-<script src="js/list.js"></script>
-<script src="js/card.js"></script>
-<script src="js/modal.js"></script>   
+    <script src="js/data.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/list.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/modal.js"></script>
 </body>
+
 </html>
