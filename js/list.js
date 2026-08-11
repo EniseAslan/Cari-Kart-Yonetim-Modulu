@@ -16,8 +16,9 @@ function renderList(){
         <tr class="border-b hover:bg-blue-100">
             <td class="px-4 py-2">${cari.unvan}</td>
             <td class="px-4 py-2">${CARI_TIPI_LABELS[cari.cariTipi]}</td>
-            <td class="px-4 py-2">${DURUM_LABELS[cari.durum]}</td>
-
+            <td class="px-4 py-2">${DURUM_LABELS[cari.durum]}
+            <button onclick="duzenle(${cari.id})" class="text-blue-500 hover:text-blue-700 px-2 py-1">Düzenle</button>
+            </td>
         </tr>
     `).join('');
 
