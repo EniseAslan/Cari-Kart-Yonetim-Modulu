@@ -13,14 +13,16 @@ function renderList(){
 
 
     const column = filtre.map(cari => `
-        <tr class="border-b hover:bg-blue-100">
-            <td class="px-4 py-2">${cari.unvan}</td>
-            <td class="px-4 py-2">${CARI_TIPI_LABELS[cari.cariTipi]}</td>
-            <td class="px-4 py-2">${DURUM_LABELS[cari.durum]}
-            <button onclick="duzenle(${cari.id})" class="text-blue-500 hover:text-blue-700 px-2 py-1">Düzenle</button>
-            </td>
-        </tr>
-    `).join('');
+  <tr class="border-b hover:bg-gray-50">
+    <td class="px-4 py-2">
+      <button onclick="duzenle(${cari.id})" class="text-blue-600 hover:underline text-left">
+        ${cari.unvan}
+      </button>
+    </td>
+    <td class="px-4 py-2">${CARI_TIPI_LABELS[cari.cariTipi]}</td>
+    <td class="px-4 py-2">${DURUM_LABELS[cari.durum]}</td>
+  </tr>
+`).join('');
 
     document.getElementById('liste-alani').innerHTML = `
     <table class="min-w-full border-collapse">
