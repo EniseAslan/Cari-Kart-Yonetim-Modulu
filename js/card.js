@@ -27,7 +27,15 @@ function renderKart() {
             ${enumOptions(DURUM_LABELS)}
           </select>
         </div>
-        <div class="flex-gap-2">
+  <div>
+  <label class="block text-sm mb-1">Cari Grubu</label>
+  <div class="flex items-center gap-2">
+    <span class="text-sm text-gray-600">${state.seciliGrup ? state.seciliGrup.adi : 'Seçilmedi'}</span>
+    <button type="button" onclick="grupModaliAc()" class="text-blue-600 hover:underline text-sm">Grup Seç</button>
+  </div>
+</div>
+
+        <div class="flex gap-2">
         <button id="kaydetBtn" class="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2 w-fit">
          ${duzenleme ? 'Güncelle':'Kaydet'}
         </button>
@@ -40,7 +48,7 @@ function renderKart() {
 if(duzenleme){
   document.getElementById('cariTipiInput').value=cari.cariTipi;
   document.getElementById('durumInput').value=cari.durum;
-  document.getElementById('vazgecBtn').addEventListener('click',kaydet);
+  document.getElementById('vazgecBtn').addEventListener('click',vazgec);
 }
 
   document.getElementById('kaydetBtn').addEventListener('click', kaydet);
@@ -60,30 +68,33 @@ function kaydet() {
   }
 
 
-  if(state.duzenlenenCari ===null){
-    const yeniCari ={
-      id: yeniId(),
-      unvan,vergiNo,cariTipi,durum, grupId:null, grupAdi:'',sehir:'',
-
-    };
-    cariler.push(yeniCari);
-  }
+  if (state.duzenlenenCari === null) {
+  const yeniCari = {
+    id: yeniId(),
+    unvan, vergiNo, cariTipi, durum,
+    grupId: state.seciliGrup ? state.seciliGrup.id : null,
+    grupAdi: state.seciliGrup ? state.seciliGrup.adi : '',
+    sehir: '',
+  };
+  cariler.push(yeniCari);
+}
   else {
     const index =cariler.findIndex(c => c.id === state.duzenlenenCari.id);
-    cariler[index] ={...cariler[index],unvan, vergiNo,cariTipi,durum};
+    cariler[index] ={...cariler[index],unvan, vergiNo,cariTipi,durum,
+      grupId: state.seciliGrup ? state.seciliGrup.id:null,
+      grupAdi: state.seciliGrup ? state.seciliGrup.adi: '',
+    };
   }
 
  
   state.duzenlenenCari =null;
+  state.seciliGrup=null;
 
   renderList();  
   renderKart();  
 }
 
-function vazgec(){
-  state.duzenlenenCari=null;
-  renderKart();
-}
+
 
 
 function yeniId() {
@@ -93,13 +104,26 @@ function yeniId() {
 
 function duzenle(id) {
   const cari = cariler.find(c => c.id === id);
-  state.duzenlenenCari=cari;
 
   if (!cari) {
     alert('Cari bulunamadı.');
     return;
   }
+
+  state.duzenlenenCari = cari;
+  state.seciliGrup = cari.grupId ? { id: cari.grupId, adi: cari.grupAdi } : null;
   renderKart();
 }
 
+function vazgec(){
+  state.duzenlenenCari=null;
+  state.seciliGrup=null;
+  renderKart();
+}
+function grupModaliAc() {
+  acModal(cariGruplari, function (secilenGrup) {
+    state.seciliGrup = secilenGrup;
+    renderKart();
+  });
+}
 renderKart();
