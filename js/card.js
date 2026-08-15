@@ -9,21 +9,21 @@ function renderKart() {
       <div class="flex flex-col gap-3">
         <div>
           <label class="block text-sm mb-1">Ünvan</label>
-          <input type="text" id="unvanInput" value="${duzenleme ? cari.unvan : ''}" class="border border-gray-300 rounded px-3 py-2 w-full">
+          <input type="text" id="unvanInput" value="${duzenleme ? cari.unvan : ''}" class="${INPUT_STYLE}">
         </div>
         <div>
           <label class="block text-sm mb-1">Vergi No</label>
-          <input type="text" id="vergiNoInput" value="${duzenleme ? cari.vergiNo : ''}" class="border border-gray-300 rounded px-3 py-2 w-full">
+          <input type="text" id="vergiNoInput" value="${duzenleme ? cari.vergiNo : ''}" class="${INPUT_STYLE}">
         </div>
         <div>
           <label class="block text-sm mb-1">Cari Tipi</label>
-          <select id="cariTipiInput" class="border border-gray-300 rounded px-3 py-2 w-full">
+          <select id="cariTipiInput" class="${INPUT_STYLE}">
             ${enumOptions(CARI_TIPI_LABELS)}
           </select>
         </div>
         <div>
           <label class="block text-sm mb-1">Durum</label>
-          <select id="durumInput" class="border border-gray-300 rounded px-3 py-2 w-full">
+          <select id="durumInput" class="${INPUT_STYLE}">
             ${enumOptions(DURUM_LABELS)}
           </select>
         </div>
@@ -36,10 +36,10 @@ function renderKart() {
 </div>
 
         <div class="flex gap-2">
-        <button id="kaydetBtn" class="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2 w-fit">
+        <button id="kaydetBtn" class="${BTN_PRIMARY}">
          ${duzenleme ? 'Güncelle':'Kaydet'}
         </button>
-        ${duzenleme ? `<button id="vazgecBtn" class="border border-gray-300 rounded px-4 py-2 w-fit hover:bg-gray-50">Vazgeç</button>` : ''}
+        ${duzenleme ? `<button id="vazgecBtn" class="${BTN_SECONDARY}">Vazgeç</button>` : ''}
         </div>
       </div>
     </div>
