@@ -31,7 +31,7 @@ const cariGruplari = [
     { id: 5, adi: 'Grup 5' },
 ];
 
-const cariler = [
+let cariler = [
     { id: 1, unvan: 'Ali Duman', vergiNo: '1111111111', cariTipi: CariTipi.MUSTERI, durum: Durum.AKTIF, grupId: 1, grupAdi: 'Bayiler', sehir: 'İstanbul' },
     { id: 2, unvan: 'Ayşe Aslan', vergiNo: '2222222222', cariTipi: CariTipi.TEDARIKCI, durum: Durum.PASIF, grupId: 2, grupAdi: 'Grup 2', sehir: 'Ankara' },
     { id: 3, unvan: 'Mehmet Can', vergiNo: '3333333333', cariTipi: CariTipi.HER_IKISI, durum: Durum.AKTIF, grupId: 3, grupAdi: 'Grup 3', sehir: 'İzmir' },

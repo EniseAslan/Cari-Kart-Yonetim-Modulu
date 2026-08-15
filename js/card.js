@@ -30,7 +30,7 @@ function renderKart() {
   <div>
   <label class="block text-sm mb-1">Cari Grubu</label>
   <div class="flex items-center gap-2">
-    <span class="text-sm text-gray-600">${state.seciliGrup ? state.seciliGrup.adi : 'Seçilmedi'}</span>
+    <span id="seciliGrup" class="text-sm text-gray-600">${state.seciliGrup ? state.seciliGrup.adi : 'Seçilmedi'}</span>
     <button type="button" onclick="grupModaliAc()" class="text-blue-600 hover:underline text-sm">Grup Seç</button>
   </div>
 </div>
@@ -123,7 +123,8 @@ function vazgec(){
 function grupModaliAc() {
   acModal(cariGruplari, function (secilenGrup) {
     state.seciliGrup = secilenGrup;
-    renderKart();
+    document.getElementById('seciliGrup').textContent=secilenGrup.adi;
+    
   });
 }
 renderKart();

@@ -21,16 +21,22 @@ function renderList(){
     </td>
     <td class="px-4 py-2">${CARI_TIPI_LABELS[cari.cariTipi]}</td>
     <td class="px-4 py-2">${DURUM_LABELS[cari.durum]}</td>
+    <td class="px-4 py-2">
+    <button onclick="sil(${cari.id})" class="text-red-600 hover:underline">Sil</button>
+    </td>
   </tr>
 `).join('');
 
-    document.getElementById('liste-alani').innerHTML = `
+    document.getElementById('liste-alani').innerHTML=  filtre.length ===0 ? 
+    `<p class="text-gray-500 text-center py-6">Kayıt bulunamadı</p>`:   
+    `
     <table class="min-w-full border-collapse">
         <thead>
             <tr class="bg-gray-200 text-left">
                 <th class="px-4 py-2">Unvan</th>
                 <th class="px-4 py-2">Cari Tipi</th>
                 <th class="px-4 py-2">Durum</th>
+                <th class="px-4 py-2">İslem</th>
             </tr>
         </thead>
         <tbody>
@@ -50,3 +56,11 @@ document.getElementById('cariDurumuFiltre').addEventListener('change', renderLis
 
 renderList();
 
+function sil(id){
+    const onay =confirm('Silmek istediğinize emin misiniz?');
+    if(!onay)return;
+    
+    cariler =cariler.filter(cari=> cari.id !== id);
+    renderList();
+    bildirimGoster('Kayıt silindi');
+}
